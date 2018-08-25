@@ -4,19 +4,16 @@ import os
 import time
 
 
-
-directory = os.getcwd()
-print(directory)
-
-
-data_path = directory + '\\Voice\\data\\unzipped\\train'
-
-
 def get_immediate_subdirectories(a_dir):
     return [name for name in os.listdir(a_dir)
             if os.path.isdir(os.path.join(a_dir, name))]
 
 
+directory = os.getcwd()
+# Unzipped data is put in the following path
+data_path = directory + '\\Voice\\data\\unzipped\\train'
+
+# Create a file with file description and labels (gender and accent)
 df = pd.DataFrame()
 subdirs = get_immediate_subdirectories(data_path)
 for subdir in subdirs:
@@ -35,7 +32,6 @@ for subdir in subdirs:
     
 
 print(df)
-
 df.to_csv("description.csv")
     
 
